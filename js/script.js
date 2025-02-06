@@ -24,3 +24,16 @@ document.addEventListener("DOMContentLoaded", function() {
         navLinks.classList.toggle("active"); 
     });
 });
+
+
+window.addEventListener("load", function() {
+    const preloader = document.getElementById("preloader");
+    const content = document.getElementById("content");
+
+    setTimeout(() => {
+        preloader.style.opacity = "0"; 
+        setTimeout(() => {
+            preloader.style.display = "none"; 
+        }, 800); 
+    }, 5000); 
+});
