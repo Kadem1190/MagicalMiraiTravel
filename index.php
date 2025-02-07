@@ -1,3 +1,6 @@
+<?php
+require_once('utils/auth.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,21 +16,7 @@
 </div>
 <body id="dashboard-body">
     <!-- Navbar  -->
-    <nav class="navbar">
-        <div class="logo">
-            <img style="height: 50px; width: 50px;" src="./img/img_intro_postmark.svg"> 
-            マジカルミライ<i class="fa-solid fa-plane-departure"></i>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="travel.html"><i class="fas fa-map"></i> Travel</a></li>
-            <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-            <li><a href="#" onclick="return false;" class="toggle-darkmode"><i class="fas fa-moon"></i> <span>Dark Mode</span></a></li>
-        </ul>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
+    <?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, in_home: true) ?>
     <div id="empty-space"></div>
     <!-- Hero Section -->
     <section id="dashboard-hero">

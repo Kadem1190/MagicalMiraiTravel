@@ -1,3 +1,18 @@
+<?php
+require_once('db.php');
+require_once('utils/auth.php');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $success = login($conn, $username, $password);
+    if ($success) {
+        header('Location: travel.php');
+    } else {
+        // Put your code here if the login is failed
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body id="login-body">
-    <nav class="navbar">
-        <div class="logo"><img style="height: 50px; width: 50px;" src="./img/img_intro_postmark.svg"> マジカルミライ<i class="fa-solid fa-plane-departure"></i></div>
-        <ul class="nav-links">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="travel.html"><i class="fas fa-map"></i> Travel</a></li>
-            <li><a href="login.html" class="active"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-            <li><a href="#" class="toggle-darkmode"><i class="fas fa-moon"></i> <span>Dark Mode</span></a></li>
-          </ul>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, in_home: true) ?>
 
     <div class="container">
         <div class="login-box">
@@ -34,8 +38,8 @@
                     <label for="password"><i class="fas fa-lock"></i> パスワード </label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button onclick="window.location = 'index.html'" type="button" class="btn">Login</button>
-               <p id="register"> Dont have an account? <a href="register.html">Register now!</a></p>
+                <button type="submit" class="btn">Login</button>
+               <p id="register"> Dont have an account? <a href="register.php">Register now!</a></p>
             </form>
         </div>
     </div>
