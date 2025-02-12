@@ -557,6 +557,7 @@ body.dark-mode #dashboard-hero p {
 }
 
 /* Footer */
+/* ======= Footer Styling ======= */
 footer {
     margin-top: auto;
     width: 100%;
@@ -565,3 +566,115 @@ footer {
     background: #f7d26e;
     color: var(--text-light);
 }
+
+/* ======= Travel Section Styling ======= */
+.travel-section {
+    padding: 60px 20px;
+    background: var(--background-light);
+    text-align: center;
+}
+
+.travel-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.travel-section p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 50px;
+}
+
+.travel-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.travel-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    width: 320px;      
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.travel-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.travel-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.travel-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.travel-card p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.travel-card .btn {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    justify-content: space-between; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.travel-card .btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* Dark Mode Adjustments for Travel Section */
+body.dark-mode .travel-section {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode .travel-card {
+    background: rgba(30, 30, 30, 0.95);
+    color: var(--text-dark);
+}
+
+body.dark-mode .travel-card h3 {
+    color: var(--primary-color);
+}
+
+body.dark-mode .travel-card p {
+    color: var(--text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .travel-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .travel-card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+

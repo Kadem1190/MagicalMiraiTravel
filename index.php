@@ -21,8 +21,8 @@ require_once('utils/auth.php');
     <!-- Hero Section -->
     <section id="dashboard-hero">
         <h1>Explore the World with マジカルミライ Travel</h1>
-        <p>Your adventure begins here.</p>
-    </section>
+        <!-- <p>Hello, $USER</p> -- Implement fetching the username logged in -->
+  </section>
 
     <!-- Main Dashboard Content -->
     <div class="dashboard-content">
@@ -79,7 +79,7 @@ require_once('utils/auth.php');
                 <i class="fas fa-ticket-alt fa-3x"></i>
                 <h2>Book Your Travel</h2>
                 <p>Find flights, hotels, and activities.</p>
-                <button class="btn">Book Now</button>
+                <a href="travel.php"><button class="btn">Book Now</button></a>
             </div>
 
             <!-- Budget Tools Card -->

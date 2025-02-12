@@ -1,0 +1,104 @@
+/* ======= Destination Section Styling ======= */
+.destination-section {
+    padding: 60px 20px;
+    background: var(--background-light);
+    text-align: center;
+}
+#onlywhite {
+    color: white;
+}
+.destination-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.destination-section p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 50px;
+}
+
+.destination-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.destination-card {
+    border-radius: 15px;
+    padding: 25px;
+    width: 320px;      
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+.destination-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.destination-card p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.destination-card .btn {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    justify-content: space-between; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.destination-card .btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* Dark Mode Adjustments for Destination Section */
+body.dark-mode .destination-section {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode .destination-card {
+    color: var(--text-dark);
+}
+
+body.dark-mode .destination-card h3 {
+    color: var(--primary-color);
+}
+
+body.dark-mode .destination-card p {
+    color: var(--text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .destination-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .destination-card {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
