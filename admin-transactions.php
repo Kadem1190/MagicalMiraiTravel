@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/flights.css">
 </head>
 <body id="dashboard-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
 
     <main>
     <div id="empty-space"></div>
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $conn->query("SELECT * FROM transactions");
 
         echo '<div class="dashboard-content">';
-        echo '<h2>All Transactions</h2>';
+        echo '<h2>Manage Transactions</h2>';
         echo '<form action="admin-transactions.php" method="POST" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">';
         while ($row = $result->fetch_assoc()) {
             echo "<div class='dashboard-card'>

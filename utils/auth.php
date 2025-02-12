@@ -70,10 +70,25 @@ function ensure_admin($conn) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $account = mysqli_fetch_assoc($result);
-
+    
     if (!$logged_in || !$account || ($account['role'] ?? 'user') !== 'admin') {
         header('HTTP/1.1 403 Forbidden');
         die('Access denied');
     }
+}
+
+function is_admin($conn) {
+    $account_id = $_COOKIE[COOKIE_ACCOUNT_ID_KEY];
+    $stmt = mysqli_prepare($conn, "SELECT role FROM accounts WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, 'i', $account_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $account = mysqli_fetch_assoc($result);
+    
+    return $account['role'] == 'admin';
+}
+
+function is_logged_in() {
+    return !empty($_COOKIE[COOKIE_ACCOUNT_ID_KEY]);
 }
 ?>
