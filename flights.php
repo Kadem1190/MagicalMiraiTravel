@@ -1,5 +1,18 @@
 <?php
+require_once('db.php');
 require_once('utils/auth.php');
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['submit-search'])) {
+    $search = '%' . $_POST['search'] . '%';
+    $stmt = $conn->prepare("SELECT id, code, image, name, description FROM flights WHERE name LIKE ?");
+    $stmt->bind_param('s', $search);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    $stmt = $conn->prepare("SELECT id, code, image, name, description FROM flights");
+    $stmt->execute();
+    $result = $stmt->get_result();
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,33 +39,45 @@ require_once('utils/auth.php');
     <!-- Main Dashboard Content -->
     <div class="dashboard-content">
         <!-- Search Section -->
-        <div class="search-container">
-            <input type="text" placeholder="Search for flights...">
-            <button class="btn">Search</button>
-        </div>
+        <form action="flights.php" method="POST" class="search-container">
+            <input type="text" placeholder="Search for flights..." name="search">
+            <button class="btn" name="submit-search" value="1">Search</button>
+        </form>
 
         <!-- Flights Section -->
         <section class="flights-section">
             <h2>Available Flights</h2>
             <div class="flights-cards">
-                <div class="flights-card">
+                <?php
+                while ($row = $result->fetch_assoc()) {
+                    echo '
+                    <div class="flights-card">
+                        <img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" alt="Flight '.$row['id'].'">
+                        <h3>'.$row['name'].'</h3>
+                        <p>'.$row['description'].'</p>
+                        <a href="tickets.php?flight='.$row['code'].'" role="button" class="btn">Book Now</a>
+                    </div>
+                    ';
+                }
+                ?>
+                <!-- <div class="flights-card">
                     <img src="img/flight1.jpg" alt="Flight 1">
                     <h3>Tokyo to New York</h3>
                     <p>Experience the best in-flight services and comfort.</p>
-                    <button class="btn">Book Now</button>
+                    <a href="tickets.php?flight=TKY-NYK" role="button" class="btn">Book Now</a>
                 </div>
                 <div class="flights-card">
                     <img src="img/flight2.jpg" alt="Flight 2">
                     <h3>Paris to Tokyo</h3>
                     <p>Enjoy a seamless travel experience with our top-rated airlines.</p>
-                    <button class="btn">Book Now</button>
+                    <a href="tickets.php?flight=PRS-TKY" role="button" class="btn">Book Now</a>
                 </div>
                 <div class="flights-card">
                     <img src="img/flight3.jpg" alt="Flight 3">
                     <h3>London to Bali</h3>
                     <p>Fly in style and comfort with our premium flight options.</p>
-                    <button class="btn">Book Now</button>
-                </div>
+                    <a href="tickets.php?flight=LDN-BLI" role="button" class="btn">Book Now</a>
+                </div> -->
             </div>
         </section>
     </div>
