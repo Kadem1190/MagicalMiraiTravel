@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Feb 12, 2025 at 04:23 PM
+-- Generation Time: Feb 13, 2025 at 12:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,8 +40,11 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `name`, `email`, `role`, `password`) VALUES
-(1, 'Udin1', 'udin123@gmail.com', 'user', '$2y$10$w.m6EwrT8FlN4ciDkRdFAeFvAObYQpT23OUzy4l30km4V6q/PXk5m'),
-(2, 'Admin', 'admin@gmail.com', 'admin', '$2y$10$WMdGMvU2CNtA8Zi6F9naB.KR63YAGdizaZgGdzXOnV4I2Z8VuVi5m');
+(1, 'Udin', 'udin@nopal.com', 'user', '$2y$10$xOuvOjVn/S2oUq8jp61.h.Iqng40OAcHEHFXJIWrOM9FwIJ0AKtg6'),
+(2, 'Admin', 'admin@gmail.com', 'admin', '$2y$10$WMdGMvU2CNtA8Zi6F9naB.KR63YAGdizaZgGdzXOnV4I2Z8VuVi5m'),
+(4, 'lkeizory123', 'keizoryadzra@gmail.com', 'admin', '$2y$10$kbE9RMhFqNqwdb2WA20wSuE8GS5nkXIrVrTC/jPzKZfdpgExOs.EC'),
+(5, 'Kadem', 'kadem1190@icloud.com', 'user', '$2y$10$9AxQQMoqQCdf1eE8Y7hj/Orr0068D7EJ7Ad9XYFMp7BPh2We3JX/S'),
+(6, 'Nopal', 'nopal@nopal.com', 'user', '$2y$10$Y6tJ0/6CUnaGoXjOqcFTqO5yLmU13299CRuAAbtD7Vle55U5zpvTK');
 
 -- --------------------------------------------------------
 
@@ -89,7 +92,13 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `accounts_id`, `passenger_name`, `flight_code`, `seat`, `departure_date`, `payment_method`, `status`, `date`) VALUES
-(4, 1, 'Rizky Sugiharto', 'TKY-NYK', 'A4', '2025-02-15', 'Kartu Kredit', 'Dibayar', '0000-00-00');
+(4, 1, 'Rizky Sugiharto', 'TKY-NYK', 'A4', '2025-02-15', 'Kartu Kredit', 'Dibayar', '0000-00-00'),
+(5, 5, 'nigga', 'PRS-TKY', 'C5', '2025-02-21', 'Transfer Bank', 'Dibayar', '2025-02-13'),
+(6, 5, 'nigga', 'PRS-TKY', 'C5', '2025-02-21', 'Transfer Bank', 'Dibayar', '2025-02-13'),
+(7, 5, 'Rizky Sugiharto', 'TKY-NYK', 'B6', '2025-02-14', 'Kartu Kredit', 'Dibayar', '2025-02-13'),
+(8, 5, 'Rizky Sugiharto', 'TKY-NYK', 'B6', '2025-02-14', 'Kartu Kredit', 'Dibayar', '2025-02-13'),
+(9, 5, 'Rizky Sugiharto', 'TKY-NYK', 'B6', '2025-02-14', 'Kartu Kredit', 'Dibayar', '2025-02-13'),
+(10, 6, 'rizky sugiharto', 'LDN-BLI', 'B2', '2025-02-28', 'Transfer Bank', 'Dibayar', '2025-02-13');
 
 --
 -- Indexes for dumped tables
@@ -125,7 +134,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `flights`
@@ -137,7 +146,7 @@ ALTER TABLE `flights`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
