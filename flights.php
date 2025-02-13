@@ -2,8 +2,10 @@
 require_once('db.php');
 require_once('utils/auth.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['submit-search'])) {
-    $search = '%' . $_POST['search'] . '%';
+ensure_logged_in();
+
+if (!empty($_GET['search'])) {
+    $search = '%' . $_GET['search'] . '%';
     $stmt = $conn->prepare("SELECT id, code, image, name, description FROM flights WHERE name LIKE ?");
     $stmt->bind_param('s', $search);
     $stmt->execute();
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['submit-search'])) {
     <link rel="stylesheet" href="css/flights.css">
 </head>
 <body id="dashboard-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_travel: true) ?>
 
     <main>
     <div id="empty-space"></div>
@@ -39,9 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['submit-search'])) {
     <!-- Main Dashboard Content -->
     <div class="dashboard-content">
         <!-- Search Section -->
-        <form action="flights.php" method="POST" class="search-container">
+        <form action="" method="GET" class="search-container">
             <input type="text" placeholder="Search for flights..." name="search">
-            <button class="btn" name="submit-search" value="1">Search</button>
+            <button class="btn">Search</button>
         </form>
 
         <!-- Flights Section -->

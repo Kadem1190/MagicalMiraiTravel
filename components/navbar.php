@@ -3,6 +3,7 @@ function get_navbar_html(
     bool $logged_in = false,
     bool $is_admin = false,
     bool $in_home = false,
+    bool $in_admin = false,
     bool $in_travel = false,
     bool $in_login = false,
 ) {
@@ -14,11 +15,11 @@ function get_navbar_html(
         </div>
         <ul class="nav-links">
             '.($is_admin ?
-            '<li><a href="admin.php"><i class="fas fa-home"></i> Admin</a></li>'
+            '<li><a href="admin.php"'.($in_admin ? 'class="active"' : '').'><i class="fas fa-home"></i> Admin</a></li>'
             :
-            '').'
-            <li><a href="index.php"'.($in_home ? 'class="active"' : '').'><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="travel.php"'.($in_travel ? 'class="active"' : '').'><i class="fas fa-map"></i> Travel</a></li>
+            '<li><a href="index.php"'.($in_home ? 'class="active"' : '').'><i class="fas fa-home"></i> Home</a></li>'
+            ).
+            '<li><a href="travel.php"'.($in_travel ? 'class="active"' : '').'><i class="fas fa-map"></i> Travel</a></li>
             '.($logged_in ?
             '<li><a href="logout.php"'.($in_login ? 'class="active"' : '').'><i class="fas fa-sign-in-alt"></i> Logout</a></li>'
             :

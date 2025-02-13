@@ -48,11 +48,13 @@ document.addEventListener("DOMContentLoaded", function() {
 window.addEventListener("load", function() {
     const preloader = document.getElementById("preloader");
     const content = document.getElementById("content");
-
+    // if(this.document.readyState == "loading"
+    //     {} --------------------------------- Replace using readystate instead of forcing it to load even at good connection
+    // )
     setTimeout(() => {
         preloader.style.opacity = "0"; 
         setTimeout(() => {
             preloader.style.display = "none"; 
         }, 800); 
-    }, 5000); 
+    }, 3000); 
 });

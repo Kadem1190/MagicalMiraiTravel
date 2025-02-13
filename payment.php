@@ -2,6 +2,8 @@
 require_once('db.php');
 require_once('utils/auth.php');
 
+ensure_logged_in();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
     $_SESSION['booking_details'] = $_POST;
@@ -20,7 +22,7 @@ $details = $_SESSION['booking_details'] ?? [];
     <link rel="stylesheet" href="css/flights.css">
 </head>
 <body id="dashboard-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_travel: true) ?>
 
     <main>
     <div id="empty-space"></div>

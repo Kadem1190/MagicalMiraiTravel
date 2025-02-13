@@ -2,6 +2,8 @@
 require_once('db.php');
 require_once('utils/auth.php');
 
+ensure_logged_in();
+
 session_start();
 $details = $_SESSION['booking_details'] ?? [];
 
@@ -27,12 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="css/flights.css">
 </head>
 <body id="dashboard-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_travel: true) ?>
 
     <main>
     <div id="empty-space"></div>
     <!-- Hero Section -->
-    <div class="flights-section">
+    <div class="flights-section">   
         <h2>Receipt Pemesanan</h2>
         <div class="receipt">
             <p><strong>Nama Penumpang:</strong> <?php echo htmlspecialchars($details['name'] ?? ''); ?></p>
@@ -42,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p><strong>Metode Pembayaran:</strong> <?php echo htmlspecialchars($details['payment'] ?? ''); ?></p>
             <p><strong>Status:</strong> Dibayar</p>
         </div>
+        <!-- <a class="btn" onclick="window.print()">Print Reciept</a> -->
         <a href="flights.php" class="btn">Kembali ke Halaman Utama</a>
     </div>
     </main>
@@ -62,9 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     .receipt {
         margin-bottom: 50px;
     }
-    .receipt p {
+    /* .receipt p {
         color: white;
         text-align: left;
         margin-bottom: 20px;
-    }
+    } */
+    body.dark-mode .dashboard-card p {
+    color: var(--text-dark);
+}
 </style>

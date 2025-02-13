@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/flights.css">
 </head>
 <body id="dashboard-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_admin: true) ?>
 
     <main>
     <div id="empty-space"></div>
@@ -42,9 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         echo '<div class="dashboard-content">';
         echo '<h2>Manage Transactions</h2>';
-        echo '<form action="admin-transactions.php" method="POST" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">';
+        echo '<div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">';
         while ($row = $result->fetch_assoc()) {
-            echo "<div class='dashboard-card'>
+            echo "<form action='' method='POST' class='dashboard-card'>
                 <p><strong>ID:</strong> {$row['id']}</p>
                 <p><strong>Passenger Name:</strong> <input type='text' name='passenger_name' value='{$row['passenger_name']}' /></p>
                 <p><strong>Flight Code:</strong> <input type='text' name='flight_code' value='{$row['flight_code']}' /></p>
@@ -60,9 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p><strong>Departure Date:</strong> <input type='date' name='departure_date' value='{$row['departure_date']}' /></p>
                 <button class='btn' type='submit' name='update_id' value='{$row['id']}'>Update</button>
                 <button class='btn btn-outline' type='submit' name='delete_id' value='{$row['id']}'>Delete</button>
-            </div>";
+            </form>";
         }
-        echo '</form>';
+        echo '</div>';
         echo '</div>';
         ?>
     </div>

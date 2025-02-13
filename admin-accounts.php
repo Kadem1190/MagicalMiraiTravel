@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/flights.css">
 </head>
 <body id="dashboard-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_admin: true) ?>
 
     <main>
     <div id="empty-space"></div>
@@ -84,10 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<button class="btn" type="submit" name="create" value="1">Create</button>';
         echo '</form>';
 
-        echo '<form action="admin-accounts.php" method="POST" style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">';
+        echo '<div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">';
         while ($row = $result->fetch_assoc()) {
             if ($row['id'] == $account_id) continue;
-            echo "<div class='dashboard-card'>
+            echo "<form action='' method='POST' class='dashboard-card'>
                     <p><strong>ID:</strong> {$row['id']}</p>
                     <p><strong>Name:</strong> <input type='text' name='name' value='{$row['name']}' /></p>
                     <p><strong>Email:</strong> <input type='email' name='email' value='{$row['email']}' /></p>
@@ -100,9 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p><strong>Password:</strong> <input type='password' name='password' /></p>
                     <button class='btn' type='submit' name='update_id' value='{$row['id']}'>Update</button>
                     <button class='btn btn-outline' type='submit' name='delete_id' value='{$row['id']}'>Delete</button>
-                  </div>";
+                  </form>";
         }
-        echo '</form>';
+        echo '</div>';
         echo '</div>';
         ?>
     </div>

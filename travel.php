@@ -1,6 +1,8 @@
 <?php
 require_once('db.php');
 require_once('utils/auth.php');
+
+ensure_logged_in()
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ require_once('utils/auth.php');
     <link rel="stylesheet" href="css/travel.css">
 </head>
 <body id="dashboard-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_travel: true) ?>
 
     <main>
     <div id="empty-space"></div>

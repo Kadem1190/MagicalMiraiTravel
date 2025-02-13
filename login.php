@@ -5,9 +5,13 @@ require_once('utils/auth.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $success = login($conn, $username, $password);
-    if ($success) {
-        header('Location: travel.php');
+    $result = login($conn, $username, $password);
+    if ($result['success']) {
+        if ($result['role'] == 'admin') {
+            header('Location: admin.php');
+        } else {
+            header('Location: index.php');
+        }
     } else {
         // Put your code here if the login is failed
     }
@@ -24,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body id="login-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_login: true) ?>
 
     <div class="container">
         <div class="login-box">

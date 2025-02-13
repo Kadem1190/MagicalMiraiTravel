@@ -1,5 +1,8 @@
 <?php
+require_once('db.php');
 require_once('utils/auth.php');
+
+ensure_admin($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +16,7 @@ require_once('utils/auth.php');
 </head>
 <body id="dashboard-body">
     <!-- Navbar  -->
-    <?php include('components/navbar.php'); echo get_navbar_html(in_home: true) ?>
+    <?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_admin: true) ?>
     <div id="empty-space"></div>
     <!-- Hero Section -->
     <section id="dashboard-hero">

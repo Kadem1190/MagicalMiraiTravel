@@ -6,12 +6,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $result_code = register($conn, $username, $email, $password);
-    if ($result_code == 0) {
+    $result = register($conn, $username, $email, $password);
+    if ($result['code'] == 0) {
         // Put your code here if the register is failed because something
-    } else if ($result_code == 1) {
-        header('Location: travel.php');
-    } else if ($result_code == 2) {
+    } else if ($result['code'] == 1) {
+        if ($result['role'] == 'admin') {
+            header('Location: admin.php');
+        } else {
+            header('Location: index.php');
+        }
+    } else if ($result['code'] == 2) {
         // Put your code here if the register already have an account
     }
 }
@@ -27,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body id="login-body">
-<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn),  in_home: true) ?>
+<?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_login: true) ?>
 
     <div class="container">
         <div class="login-box">
