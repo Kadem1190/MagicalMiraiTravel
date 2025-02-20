@@ -23,14 +23,14 @@ ensure_logged_in();
     <div id="empty-space"></div>
     <!-- Hero Section -->
     <div class="flights-section">
-        <h2>Pesan Tiket Pesawat Anda</h2>
+        <h2>Order Your Flights Ticket</h2>
         <form method="POST" action="payment.php" class="booking-form">
             <div class="input-group">
-                <label for="name">Nama Penumpang</label>
+                <label for="name">Passanger Name</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="input-group">
-                <label for="flight">Pilih Penerbangan</label>
+                <label for="flight">Choose Flights</label>
                 <select id="flight" name="flight" value="<?= !empty($_GET['flight']) ? $_GET['flight'] : '' ?>">
                     <option value="TKY-NYK">Tokyo to New York</option>
                     <option value="PRS-TKY">Paris to Tokyo</option>
@@ -38,16 +38,16 @@ ensure_logged_in();
                 </select>
             </div>
             <div class="input-group">
-                <label for="date">Pilih Jadwal</label>
+                <label for="date">Choose Departure Date</label>
                 <input type="date" id="date" name="date" required>
             </div>
             <div class="form-group">
-                <label for="seat">Pilih Tempat Duduk</label>
+                <label for="seat">Choose Seat</label>
                 <div class="seat-map">
                     <?php for ($row = 'A'; $row <= 'C'; $row++) { ?>
                         <div class="seat-row">
                             <?php for ($col = 1; $col <= 6; $col++) { ?>
-                                <input type="radio" name="seat" id="<?php echo $row . $col; ?>" value="<?php echo $row . $col; ?>">
+                                <input type="radio" name="seat" id="<?php echo $row . $col; ?>" value="<?php echo $row . $col; ?>" required>
                                 <label for="<?php echo $row . $col; ?>" class="seat"><?php echo $row . $col; ?></label>
                             <?php } ?>
                         </div>
@@ -55,14 +55,14 @@ ensure_logged_in();
                 </div>
             </div>
             <div class="input-group">
-                <label for="payment">Metode Pembayaran</label>
+                <label for="payment">Payment Method</label>
                 <select id="payment" name="payment">
-                    <option value="Kartu Kredit">Kartu Kredit</option>
-                    <option value="Transfer Bank">Transfer Bank</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
                     <option value="e-Wallet">e-Wallet</option>
                 </select>
             </div>
-            <button type="submit" class="btn">Pesan Tiket</button>
+            <button type="submit" class="btn">Order Ticket</button>
         </form>
     </div>
     </main>
@@ -118,5 +118,13 @@ ensure_logged_in();
 .seat input[type="radio"]:checked + label {
     background-color: var(--primary-color);
     color: #fff;
+}
+.dark-mode .seat {
+    background-color: var(--dark-bg);
+    color: var(--text-dark);
+    border-color: var(--primary-color);
+}
+.dark-mode .seat:hover {
+    background-color: var(--secondary-color);
 }
 </style>

@@ -28,16 +28,16 @@ $details = $_SESSION['booking_details'] ?? [];
     <div id="empty-space"></div>
     <!-- Hero Section -->
     <form action="receipt.php" method="POST" class="flights-section">
-        <h2>Konfirmasi Pembayaran</h2>
+        <h2>Payment Confirmation</h2>
         <div class="summary">
-            <p><strong>Nama Penumpang:</strong> <?php echo htmlspecialchars($details['name'] ?? ''); ?></p>
-            <p><strong>Penerbangan:</strong> <?php echo htmlspecialchars($details['flight'] ?? ''); ?></p>
-            <p><strong>Waktu Berangkat:</strong> <?php echo htmlspecialchars($details['date'] ?? ''); ?></p>
-            <p><strong>Kursi:</strong> <?php echo htmlspecialchars($details['seat'] ?? ''); ?></p>
-            <p><strong>Metode Pembayaran:</strong> <?php echo htmlspecialchars($details['payment'] ?? ''); ?></p>
+            <p><strong>Passenger Name:</strong> <?php echo htmlspecialchars($details['name'] ?? ''); ?></p>
+            <p><strong>Flight:</strong> <?php echo htmlspecialchars($details['flight'] ?? ''); ?></p>
+            <p><strong>Departure Time:</strong> <?php echo htmlspecialchars($details['date'] ?? ''); ?></p>
+            <p><strong>Seat:</strong> <?php echo htmlspecialchars($details['seat'] ?? ''); ?></p>
+            <p><strong>Payment Method:</strong> <?php echo htmlspecialchars($details['payment'] ?? ''); ?></p>
         </div>
         <div>
-            <button type="submit" class="btn">Bayar Sekarang</button>
+            <button type="submit" class="btn">Pay Now</button>
         </div>
     </form>
     </main>

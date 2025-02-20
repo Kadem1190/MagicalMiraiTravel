@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/flights.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+
 </head>
 <body id="dashboard-body">
 <?php include('components/navbar.php'); echo get_navbar_html(logged_in: $logged_in, is_admin: is_admin($conn), in_travel: true) ?>
@@ -35,17 +37,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div id="empty-space"></div>
     <!-- Hero Section -->
     <div class="flights-section">   
-        <h2>Receipt Pemesanan</h2>
+        <h2>Order Reciept</h2>
         <div class="receipt">
-            <p><strong>Nama Penumpang:</strong> <?php echo htmlspecialchars($details['name'] ?? ''); ?></p>
-            <p><strong>Penerbangan:</strong> <?php echo htmlspecialchars($details['flight'] ?? ''); ?></p>
-            <p><strong>Waktu Berangkat:</strong> <?php echo htmlspecialchars($details['date'] ?? ''); ?></p>
-            <p><strong>Kursi:</strong> <?php echo htmlspecialchars($details['seat'] ?? ''); ?></p>
-            <p><strong>Metode Pembayaran:</strong> <?php echo htmlspecialchars($details['payment'] ?? ''); ?></p>
-            <p><strong>Status:</strong> Dibayar</p>
+            <p><strong>Passenger Name:</strong> <?php echo htmlspecialchars($details['name'] ?? ''); ?></p>
+            <p><strong>Flight:</strong> <?php echo htmlspecialchars($details['flight'] ?? ''); ?></p>
+            <p><strong>Departure Time:</strong> <?php echo htmlspecialchars($details['date'] ?? ''); ?></p>
+            <p><strong>Seat:</strong> <?php echo htmlspecialchars($details['seat'] ?? ''); ?></p>
+            <p><strong>Payment Method:</strong> <?php echo htmlspecialchars($details['payment'] ?? ''); ?></p>
+            <p><strong>Status:</strong> Paid</p>
         </div>
-        <!-- <a class="btn" onclick="window.print()">Print Reciept</a> -->
-        <a href="flights.php" class="btn">Kembali ke Halaman Utama</a>
+        <a class="btn" onclick="setTimeout(() => window.print(), 100)">Print Receipt</a>        <a href="flights.php" class="btn">Back to Home Page</a>
     </div>
     </main>
     <script src="js/script.js"></script>
@@ -65,12 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     .receipt {
         margin-bottom: 50px;
     }
-    /* .receipt p {
-        color: white;
-        text-align: left;
-        margin-bottom: 20px;
-    } */
-    body.dark-mode .dashboard-card p {
-    color: var(--text-dark);
-}
+    .dark-mode .receipt p {
+        color: var(--text-dark);
+    }
 </style>

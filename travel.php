@@ -44,7 +44,7 @@ ensure_logged_in()
                     <p>Find the best flight deals to your favorite destinations with our comprehensive search options.</p>
                    <a href="flights.php"> <button class="btn">Let's Fly!</button> </a>
                 </div>
-                <div class="travel-card">
+                <!-- <div class="travel-card">
                     <i class="fas fa-hotel" style="font-size: 50px"></i>
                     <h3>Hotels</h3>
                     <p>Stay at the best hotels with top-notch amenities and services.</p>
@@ -55,7 +55,7 @@ ensure_logged_in()
                     <h3>Trains</h3>
                     <p>Experience the scenic routes and comfortable journeys with our train travel options.</p>
                     <button class="btn">Let's Travel!</button>
-                </div>
+                </div> -->
             </div>
         </section>
         <section class="destination-section">
